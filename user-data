@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# 1. Update
+sudo apt update -y
+
+# 2. Install Java 21
+sudo apt install -y openjdk-21-jdk
+
+# 3. Install curl
+sudo apt install -y curl
+
+# 4. Install NVM + Node for ubuntu user
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+nvm install 24
+
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
+
+source ~/.bashrc
+
+# Verify
+java -version
+node -v
+npm -v
